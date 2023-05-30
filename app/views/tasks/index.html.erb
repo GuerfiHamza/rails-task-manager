@@ -1,0 +1,13 @@
+<h1 class="font-bold text-3xl mt-5 mb-3">My tasks</h1>
+<%= link_to "Create new task", new_task_path, class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+<br>
+<% @tasks.each do |task| %>
+<%= link_to task_path(task) do %>
+<div class="px-4 py-2 bg-gray-500 hover:bg-gray-700 mt-5 text-white rounded" >
+    <p> <input type="checkbox" checked="<%= task.completed %>"> <%= task.title %> <%= link_to 'Delete', task_path(task),
+     data:{ turbo_method: :delete, turbo_confirm: 'You sure?'} %></p>
+</div>
+
+  <% end %>
+
+<% end %>
